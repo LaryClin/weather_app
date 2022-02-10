@@ -9,20 +9,31 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        drawer: NavBar(),
-        appBar: AppBar(
-          title: Text(
-            villeName,
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: Colors.white),
+    return Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/img/bg.jpg'),
+            fit: BoxFit.cover,
           ),
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
         ),
-        body: Center(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+          drawer: const NavBar(),
+          appBar: AppBar(
+            title: Text(
+              villeName,
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.white),
+            ),
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+          ),
+          body: Center(
             child: Column(
-          children: const [],
-        )));
+              children: const [],
+            )
+          )
+        )
+    );
   }
 }
