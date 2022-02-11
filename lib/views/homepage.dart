@@ -16,21 +16,24 @@ class HomePage extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: Scaffold(
-            backgroundColor: Colors.transparent,
-            drawer: const NavBar(),
-            appBar: AppBar(
-              title: Text(
-                villeName,
-                textAlign: TextAlign.center,
-                style: const TextStyle(color: Colors.white),
-              ),
-              backgroundColor: Colors.transparent,
-              elevation: 0.0,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+          drawer: const NavBar(),
+          appBar: AppBar(
+            title: Text(
+              villeName,
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.white),
             ),
-            body: Center(
-                child: Column(
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+          ),
+          body: Center(
+            child: Column(
               children: const [],
-            ))));
+            )
+          )
+        )
+    );
   }
 }
