@@ -4,7 +4,8 @@ import 'package:weather_app/widgets/ville.dart';
 import './addButton.dart';
 
 class NavBar extends StatelessWidget {
-  const NavBar({Key? key}) : super(key: key);
+  NavBar({Key? key}) : super(key: key);
+  VillesList villesList = VillesList();
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class NavBar extends StatelessWidget {
         child: Column(
           children: <Widget>[
             addButton(context),
-            ville(context)
+            VillesList()
           ],
         )
       )

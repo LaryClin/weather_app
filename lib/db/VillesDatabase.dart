@@ -12,13 +12,13 @@ class VillesDatabase {
   Future<Database> get database async {
     if (_database != null) return _database!;
 
-    _database = await _initDB('Villes.db');
+    _database = await _initDB();
     return _database!;
   }
 
-  Future<Database> _initDB(String filePath) async {
+  Future<Database> _initDB() async {
     final dbPath = await getDatabasesPath();
-    final path = join(dbPath, filePath);
+    final path = join(dbPath, 'Villes.db');
 
     return await openDatabase(path, version: 1, onCreate: _createDB);
   }
@@ -27,23 +27,18 @@ class VillesDatabase {
     const idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     const textType = 'TEXT NOT NULL';
 
-    await db.execute('''
-      CREATE TABLE $tableVilles ( 
-          ${VilleFields.id} $idType, 
-          ${VilleFields.name} $textType,
-       )
-    ''');
+    await db.execute('CREATE TABLE $tableVilles (${VilleFields.id} $idType, ${VilleFields.name} $textType)');
   }
 
   Future<Ville> create(Ville ville) async {
-    final db = await instance.database;
+    final db = await _initDB();
 
     final id = await db.insert(tableVilles, ville.toJson());
     return ville.copy(id: id);
   }
 
   Future<Ville> readVille(int id) async {
-    final db = await instance.database;
+    final db = await _initDB();
 
     final maps = await db.query(
       tableVilles,
@@ -60,7 +55,7 @@ class VillesDatabase {
   }
 
   Future<List<Ville>> readAllVilles() async {
-    final db = await instance.database;
+    final db = await _initDB();
 
     final orderBy = '${VilleFields.name} ASC';
 
@@ -70,7 +65,7 @@ class VillesDatabase {
   }
 
   Future<int> update(Ville ville) async {
-    final db = await instance.database;
+    final db = await _initDB();
 
     return db.update(
       tableVilles,
@@ -81,7 +76,7 @@ class VillesDatabase {
   }
 
   Future<int> delete(int id) async {
-    final db = await instance.database;
+    final db = await _initDB();
     return await db.delete(
       tableVilles,
       where: '${VilleFields.id} = ?',
@@ -90,7 +85,7 @@ class VillesDatabase {
   }
 
   Future close() async {
-    final db = await instance.database;
+    final db = await _initDB();
     db.close();
   }
 }
