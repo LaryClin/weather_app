@@ -8,7 +8,7 @@ import 'package:weather_app/widgets/weekWeather.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-  late String villeName = "Paris";
+  late String villeName = "";
 
   @override
   Widget build(BuildContext context) {

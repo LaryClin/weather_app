@@ -8,7 +8,7 @@ Widget weekWeather(BuildContext context) {
           itemCount: 5,
           itemBuilder: (BuildContext context, int index) {
             return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 7),
+              padding: const EdgeInsets.all(7),
               child: Container(
                 height: 50,
                 decoration: const BoxDecoration(

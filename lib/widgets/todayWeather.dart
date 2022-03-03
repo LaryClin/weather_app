@@ -9,7 +9,7 @@ Widget todayWeather(BuildContext context) {
   var vent = "22kmh";
 
   return Padding(
-    padding: const EdgeInsets.only(bottom: 20),
+    padding: const EdgeInsets.only(bottom: 20, right: 20, left: 20),
     child: Container(
         decoration: const BoxDecoration(
             gradient: LinearGradient(
