@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:weather_app/widgets/middleWeather.dart';
 import 'package:weather_app/widgets/navbar.dart';
+import 'package:weather_app/widgets/todayWeather.dart';
+import 'package:weather_app/widgets/weekWeather.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -16,24 +19,25 @@ class HomePage extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-          drawer: const NavBar(),
-          appBar: AppBar(
-            title: Text(
-              villeName,
-              textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.white),
-            ),
+        child: Scaffold(
             backgroundColor: Colors.transparent,
-            elevation: 0.0,
-          ),
-          body: Center(
-            child: Column(
-              children: const [],
-            )
-          )
-        )
-    );
+            drawer: const NavBar(),
+            appBar: AppBar(
+              title: Text(
+                villeName,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.white),
+              ),
+              backgroundColor: Colors.transparent,
+              elevation: 0.0,
+            ),
+            body: Center(
+                child: Column(
+              children: [
+                todayWeather(context),
+                middleWeather(context),
+                weekWeather(context),
+              ], //weekWeather(context)
+            ))));
   }
 }
