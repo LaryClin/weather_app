@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app/db/VillesDatabase.dart';
+import 'package:weather_app/widgets/addButton.dart';
 import '../models/ville.dart';
 
 class VillesList extends StatefulWidget {
+
   @override
   _VillesPageState createState() => _VillesPageState();
 }
@@ -32,16 +34,6 @@ class _VillesPageState extends State<VillesList> {
     setState(() => isLoading = false);
   }
 
-  /*Future addNote() async {
-    final note = Ville(
-      id: id,
-      name:name,
-    );
-
-    await VillesDatabase.instance.create(note);
-  }*/
-
-
   @override
   Widget build(BuildContext context){
     return Center(
@@ -65,7 +57,6 @@ class _VillesPageState extends State<VillesList> {
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context);
-                      create(context)
                     },
                     child: const Text("Ok"),
                   )
@@ -73,7 +64,7 @@ class _VillesPageState extends State<VillesList> {
           });
     }
 
-    return Row(
+    /*return Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: villes.map((ville) =>
             SizedBox(
@@ -91,8 +82,39 @@ class _VillesPageState extends State<VillesList> {
                   )
               ),
             ),
-
         ).toList()
-    );
+    );*/
+
+       return ListView.builder(
+            itemCount: villes.length + 1,
+            itemBuilder: (BuildContext context, int i){
+              if(i == 0){
+                return MyAddButton(context);
+              }else{
+              return Center(
+                  child:ListTile(
+                    leading:TextButton(onPressed: () {}, child: Text(villes[i - 1].name)),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          _showMyDeleteDialog();
+                          //VillesDatabase.delete(villes[i - 1].id)
+                        },
+                    ),
+                  )
+              );}
+            }
+         );
   }
+
+  /*Future deleteVille(id, name) async {
+    final ville = Ville(
+        id?: id,
+        name: name
+    );
+    print(id);
+    await VillesDatabase.instance.delete(ville.id);
+    print('ok');
+  }*/
+
 }

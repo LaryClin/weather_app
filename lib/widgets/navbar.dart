@@ -12,13 +12,9 @@ class NavBar extends StatelessWidget {
     return Drawer(
       child: Padding(
         padding: const EdgeInsets.all(30.0),
-        child: Column(
-          children: <Widget>[
-            addButton(context),
-            VillesList()
-          ],
+        child: VillesList(),
         )
-      )
+
     );
   }
 }
