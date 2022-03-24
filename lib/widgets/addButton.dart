@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../db/VillesDatabase.dart';
 import '../models/ville.dart';
 
-// Add form widget
+
 class MyAddButton extends StatefulWidget {
   const MyAddButton(BuildContext context, {Key? key}) : super(key: key);
 
@@ -57,8 +56,6 @@ class _MyAddButton extends State<MyAddButton> {
           child: const Text("Ajouter une ville"),
           onPressed: () {
             _showMyDialog();
-            //Navigator.pop(context);
-            //Navigator.push(context, MaterialPageRoute(builder: (context) => Todo(idTodo: idTodo,)));
           },
         )
       ],
@@ -69,8 +66,6 @@ class _MyAddButton extends State<MyAddButton> {
     final ville = Ville(
         name: name
     );
-    print(name);
     await VillesDatabase.instance.create(ville);
-    print('ok');
   }
 }
