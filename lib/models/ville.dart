@@ -3,8 +3,8 @@ final String tableVilles = 'Villes';
 class VilleFields {
   static final List<String> values = [id, name];
 
-  static final String id = '_id';
-  static final String name = 'title';
+  static const String id = '_id';
+  static const String name = 'title';
 }
 
 class Ville {

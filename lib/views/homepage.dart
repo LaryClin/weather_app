@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
         ),
         child: Scaffold(
             backgroundColor: Colors.transparent,
-            drawer: const NavBar(),
+            drawer: NavBar(),
             appBar: AppBar(
               title: Text(
                 villeName,
