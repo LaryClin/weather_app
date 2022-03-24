@@ -39,8 +39,7 @@ class _VillesPageState extends State<VillesList> {
     return Center(
       child: isLoading
           ? CircularProgressIndicator()
-          : villes.isEmpty
-          ? Text('Aucune ville') : buildVilles(villes)
+          : buildVilles(villes)
     );
   }
 
@@ -64,27 +63,6 @@ class _VillesPageState extends State<VillesList> {
           });
     }
 
-    /*return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: villes.map((ville) =>
-            SizedBox(
-              height: 50,
-              child : Center(
-                  child: ListTile(
-                    leading:
-                    TextButton(onPressed: () {}, child: Text('Hola chicas')),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: () {
-                        _showMyDeleteDialog();
-                      },
-                    ),
-                  )
-              ),
-            ),
-        ).toList()
-    );*/
-
        return ListView.builder(
             itemCount: villes.length + 1,
             itemBuilder: (BuildContext context, int i){
@@ -98,7 +76,7 @@ class _VillesPageState extends State<VillesList> {
                       icon: const Icon(Icons.delete),
                         onPressed: () {
                           _showMyDeleteDialog();
-                          //VillesDatabase.delete(villes[i - 1].id)
+                          deleteVille(villes[i - 1].id);
                         },
                     ),
                   )
@@ -107,14 +85,8 @@ class _VillesPageState extends State<VillesList> {
          );
   }
 
-  /*Future deleteVille(id, name) async {
-    final ville = Ville(
-        id?: id,
-        name: name
-    );
-    print(id);
-    await VillesDatabase.instance.delete(ville.id);
-    print('ok');
-  }*/
+  Future deleteVille(id) async {
+    await VillesDatabase.instance.delete(id);
+  }
 
 }
