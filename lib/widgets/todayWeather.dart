@@ -9,7 +9,7 @@ Widget todayWeather(BuildContext context) {
   var vent = "22kmh";
 
   return Padding(
-    padding: const EdgeInsets.only(bottom: 20, right: 20, left: 20),
+    padding: const EdgeInsets.only(bottom: 20),
     child: Container(
         decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -24,18 +24,18 @@ Widget todayWeather(BuildContext context) {
                 topRight: Radius.circular(15),
                 bottomLeft: Radius.circular(15),
                 bottomRight: Radius.circular(15))),
-        width: 400,
+        width: 300,
         height: 125,
         alignment: Alignment.center,
         child: Row(children: [
           Column(children: [
             Container(
               height: 125,
-              width: 200,
+              width: 150,
               child: Column(children: [
                 Container(
                   height: 62.5,
-                  width: 200,
+                  width: 150,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -55,11 +55,11 @@ Widget todayWeather(BuildContext context) {
                 ),
                 Container(
                   height: 62.5,
-                  width: 200,
+                  width: 150,
                   alignment: Alignment.center,
                   child: Container(
                       height: 50,
-                      width: 160,
+                      width: 120,
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.white, width: 3),
                           borderRadius:
@@ -89,7 +89,7 @@ Widget todayWeather(BuildContext context) {
               Container(
                 alignment: Alignment.center,
                 height: 125,
-                width: 200,
+                width: 150,
                 child: Column(
                   children: [
                     Text(
